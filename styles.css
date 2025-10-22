@@ -179,6 +179,190 @@ button:active {
     color: white;
 }
 
+/* Upload Section */
+.upload-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--input-bg);
+}
+
+.upload-section h3 {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.upload-area {
+    background: var(--input-bg);
+    border: 2px dashed var(--text-light);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+    background: var(--card-bg);
+    transform: translateY(-2px);
+}
+
+.upload-label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    display: block;
+}
+
+.upload-text {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.upload-hint {
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+.uploaded-file {
+    margin-top: 1rem;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--input-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.file-icon {
+    font-size: 2rem;
+}
+
+.file-info {
+    flex: 1;
+    text-align: left;
+}
+
+.file-name {
+    display: block;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    word-break: break-all;
+}
+
+.file-size {
+    display: block;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+.file-remove {
+    background: transparent;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.file-remove:hover {
+    color: #e74c3c;
+    transform: scale(1.2);
+    box-shadow: none;
+}
+
+/* Progress Bar */
+.progress-container {
+    margin-top: 1rem;
+    animation: slideIn 0.3s ease;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.progress-info span {
+    color: var(--text-color);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--input-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 8px;
+    transition: width 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
 @media (max-width: 480px) {
     .container {
         padding: 1rem;
@@ -194,6 +378,14 @@ button:active {
     
     .input-section {
         flex-direction: column;
+    }
+
+    .upload-area {
+        padding: 1.5rem;
+    }
+
+    .file-item {
+        padding: 0.875rem 1rem;
     }
 }
 

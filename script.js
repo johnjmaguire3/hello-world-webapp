@@ -11,6 +11,9 @@ const resetBtn = document.getElementById('resetBtn');
 const themeBtn = document.getElementById('themeBtn');
 const clickCountEl = document.getElementById('clickCount');
 const visitTimeEl = document.getElementById('visitTime');
+const fileInput = document.getElementById('fileInput');
+const uploadArea = document.getElementById('uploadArea');
+const uploadedFileDiv = document.getElementById('uploadedFile');
 
 // Load saved theme
 const savedTheme = localStorage.getItem('theme');
@@ -89,6 +92,85 @@ nameInput.addEventListener('keypress', (e) => {
 
 // Start timer
 timerInterval = setInterval(updateTimer, 1000);
+
+// File upload handling
+const progressContainer = document.getElementById('progressContainer');
+const progressFill = document.getElementById('progressFill');
+const progressText = document.getElementById('progressText');
+const progressPercent = document.getElementById('progressPercent');
+
+fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        uploadFile(file);
+    }
+});
+
+function uploadFile(file) {
+    // Show progress bar
+    progressContainer.style.display = 'block';
+    uploadedFileDiv.innerHTML = '';
+    progressFill.style.width = '0%';
+    progressPercent.textContent = '0%';
+    progressText.textContent = 'Uploading...';
+    
+    // Simulate upload progress
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            
+            // Upload complete
+            progressFill.style.width = '100%';
+            progressPercent.textContent = '100%';
+            progressText.textContent = 'Upload complete!';
+            
+            setTimeout(() => {
+                progressContainer.style.display = 'none';
+                displayUploadedFile(file);
+            }, 500);
+        } else {
+            progressFill.style.width = progress + '%';
+            progressPercent.textContent = Math.round(progress) + '%';
+        }
+    }, 200);
+}
+
+function displayUploadedFile(file) {
+    const fileSize = formatFileSize(file.size);
+    const fileExtension = file.name.split('.').pop().toLowerCase();
+    
+    let fileIcon = '📄';
+    if (fileExtension === 'csv') fileIcon = '📊';
+    else if (['xlsx', 'xls'].includes(fileExtension)) fileIcon = '📈';
+    
+    uploadedFileDiv.innerHTML = `
+        <div class="file-item">
+            <span class="file-icon">${fileIcon}</span>
+            <div class="file-info">
+                <span class="file-name">${file.name}</span>
+                <span class="file-size">${fileSize}</span>
+            </div>
+            <button class="file-remove" onclick="removeFile()">×</button>
+        </div>
+    `;
+}
+
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+}
+
+function removeFile() {
+    uploadedFileDiv.innerHTML = '';
+    fileInput.value = '';
+}
 
 // Welcome message
 console.log('👋 Welcome to the Hello World App!');
