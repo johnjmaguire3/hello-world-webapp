@@ -9,7 +9,7 @@ A modern, interactive "Hello World" web application with a beautiful UI and enga
 - **Visit Timer**: Shows time spent on the page 
 - **Dark Mode**: Toggle between light and dark themes with persistent preference
 - **Responsive Design**: Works seamlessly on mobile and desktop
-- **Smooth Animations**: Modern UI with delightful transitions
+- **Smooth Animations**: Modern UI with delightful transitions - asdf
 
 ## 🛠️ Technologies
 
