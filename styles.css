@@ -322,6 +322,51 @@ button:active {
     box-shadow: none;
 }
 
+/* Data Preview */
+.data-preview {
+    margin-bottom: 1rem;
+    animation: slideIn 0.3s ease;
+}
+
+.preview-title {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.preview-table-container {
+    overflow-x: auto;
+    background: var(--input-bg);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.preview-table td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--text-light);
+    color: var(--text-color);
+    text-align: left;
+}
+
+.preview-table .header-row td {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border-color: var(--primary-color);
+}
+
+.preview-table tr:not(.header-row):hover {
+    background: var(--card-bg);
+}
+
 /* Progress Bar */
 .progress-container {
     margin-top: 1rem;
@@ -407,6 +452,18 @@ button:active {
 
     .file-item {
         padding: 0.875rem 1rem;
+    }
+    
+    .preview-table {
+        font-size: 0.75rem;
+    }
+    
+    .preview-table td {
+        padding: 0.4rem 0.5rem;
+    }
+    
+    .preview-table-container {
+        padding: 0.75rem;
     }
 }
 

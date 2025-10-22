@@ -131,7 +131,7 @@ function uploadFile(file) {
             
             setTimeout(() => {
                 progressContainer.style.display = 'none';
-                displayUploadedFile(file);
+                parseAndDisplayFile(file);
             }, 500);
         } else {
             progressFill.style.width = progress + '%';
@@ -140,7 +140,41 @@ function uploadFile(file) {
     }, 200);
 }
 
-function displayUploadedFile(file) {
+async function parseAndDisplayFile(file) {
+    const fileExtension = file.name.split('.').pop().toLowerCase();
+    let previewData = null;
+    
+    try {
+        if (fileExtension === 'csv') {
+            // Parse CSV
+            const text = await file.text();
+            previewData = parseCSV(text);
+        } else if (['xlsx', 'xls'].includes(fileExtension)) {
+            // Parse Excel
+            const arrayBuffer = await file.arrayBuffer();
+            const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+            previewData = jsonData.slice(0, 3);
+        }
+    } catch (error) {
+        console.error('Error parsing file:', error);
+    }
+    
+    displayUploadedFile(file, previewData);
+}
+
+function parseCSV(text) {
+    const lines = text.split('\n').filter(line => line.trim());
+    const rows = lines.slice(0, 3).map(line => {
+        // Simple CSV parsing (handles basic cases)
+        return line.split(',').map(cell => cell.trim());
+    });
+    return rows;
+}
+
+function displayUploadedFile(file, previewData) {
     currentFile = file; // Store file for download
     const fileSize = formatFileSize(file.size);
     const fileExtension = file.name.split('.').pop().toLowerCase();
@@ -149,7 +183,26 @@ function displayUploadedFile(file) {
     if (fileExtension === 'csv') fileIcon = '📊';
     else if (['xlsx', 'xls'].includes(fileExtension)) fileIcon = '📈';
     
+    let previewHTML = '';
+    if (previewData && previewData.length > 0) {
+        previewHTML = `
+            <div class="data-preview">
+                <div class="preview-title">Data Preview (First 3 rows)</div>
+                <div class="preview-table-container">
+                    <table class="preview-table">
+                        ${previewData.map((row, index) => `
+                            <tr class="${index === 0 ? 'header-row' : ''}">
+                                ${row.map(cell => `<td>${cell || ''}</td>`).join('')}
+                            </tr>
+                        `).join('')}
+                    </table>
+                </div>
+            </div>
+        `;
+    }
+    
     uploadedFileDiv.innerHTML = `
+        ${previewHTML}
         <div class="file-item">
             <span class="file-icon">${fileIcon}</span>
             <div class="file-info">
