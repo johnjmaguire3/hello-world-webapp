@@ -37,13 +37,13 @@ body {
 .container {
     padding: 2rem;
     width: 100%;
-    max-width: 500px;
+    max-width: 900px;
 }
 
 .card {
     background: var(--card-bg);
     border-radius: 24px;
-    padding: 3rem;
+    padding: 3rem 4rem;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
     animation: fadeIn 0.6s ease;
@@ -61,7 +61,7 @@ body {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -78,22 +78,25 @@ h1:hover {
 .subtitle {
     color: var(--text-light);
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    font-size: 1.2rem;
 }
 
 .input-section {
     display: flex;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 input {
     flex: 1;
-    padding: 0.875rem 1rem;
+    padding: 1rem 1.25rem;
     border: 2px solid transparent;
     border-radius: 12px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     background: var(--input-bg);
     color: var(--text-color);
     transition: all 0.3s ease;
@@ -106,10 +109,10 @@ input:focus {
 }
 
 button {
-    padding: 0.875rem 1.5rem;
+    padding: 1rem 2rem;
     border: none;
     border-radius: 12px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -129,13 +132,16 @@ button:active {
 .stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .stat-item {
     background: var(--input-bg);
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     border-radius: 16px;
     text-align: center;
     transition: all 0.3s ease;
@@ -148,15 +154,15 @@ button:active {
 
 .stat-number {
     display: block;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
     color: var(--primary-color);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
 }
 
 .stat-label {
     display: block;
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--text-light);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -164,14 +170,17 @@ button:active {
 
 .actions {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .secondary-btn {
     flex: 1;
     background: var(--input-bg);
     color: var(--text-color);
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .secondary-btn:hover {
@@ -181,23 +190,23 @@ button:active {
 
 /* Upload Section */
 .upload-section {
-    margin-top: 2rem;
-    padding-top: 2rem;
+    margin-top: 3rem;
+    padding-top: 3rem;
     border-top: 2px solid var(--input-bg);
 }
 
 .upload-section h3 {
     color: var(--text-color);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .upload-area {
     background: var(--input-bg);
-    border: 2px dashed var(--text-light);
+    border: 3px dashed var(--text-light);
     border-radius: 16px;
-    padding: 2rem;
+    padding: 3rem 2rem;
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -218,35 +227,38 @@ button:active {
 }
 
 .upload-icon {
-    font-size: 3rem;
+    font-size: 4rem;
     display: block;
 }
 
 .upload-text {
     color: var(--text-color);
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
 .upload-hint {
     color: var(--text-light);
-    font-size: 0.875rem;
+    font-size: 1rem;
 }
 
 .uploaded-file {
     margin-top: 1rem;
     min-height: 60px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     justify-content: center;
+    width: 100%;
+    overflow: hidden;
 }
 
 .file-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     background: var(--input-bg);
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 2rem;
     border-radius: 12px;
     animation: slideIn 0.3s ease;
 }
@@ -263,7 +275,7 @@ button:active {
 }
 
 .file-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .file-info {
@@ -275,14 +287,14 @@ button:active {
     display: block;
     color: var(--text-color);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     word-break: break-all;
 }
 
 .file-size {
     display: block;
     color: var(--text-light);
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     margin-top: 0.25rem;
 }
 
@@ -295,8 +307,8 @@ button:active {
 .file-download {
     background: transparent;
     color: var(--text-light);
-    font-size: 1.3rem;
-    padding: 0.25rem 0.5rem;
+    font-size: 1.5rem;
+    padding: 0.5rem 0.75rem;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -310,8 +322,8 @@ button:active {
 .file-remove {
     background: transparent;
     color: var(--text-light);
-    font-size: 1.5rem;
-    padding: 0.25rem 0.5rem;
+    font-size: 1.75rem;
+    padding: 0.5rem 0.75rem;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -324,15 +336,17 @@ button:active {
 
 /* Data Preview */
 .data-preview {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     animation: slideIn 0.3s ease;
+    width: 100%;
+    overflow: hidden;
 }
 
 .preview-title {
     color: var(--text-color);
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     text-align: center;
 }
 
@@ -340,20 +354,27 @@ button:active {
     overflow-x: auto;
     background: var(--input-bg);
     border-radius: 12px;
-    padding: 1rem;
+    padding: 1.5rem;
+    max-width: 100%;
 }
 
 .preview-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    table-layout: auto;
+    min-width: 100%;
 }
 
 .preview-table td {
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.65rem;
     border: 1px solid var(--text-light);
     color: var(--text-color);
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
 }
 
 .preview-table .header-row td {
@@ -361,6 +382,7 @@ button:active {
     color: white;
     font-weight: 600;
     border-color: var(--primary-color);
+    white-space: nowrap;
 }
 
 .preview-table tr:not(.header-row):hover {
@@ -429,37 +451,163 @@ button:active {
     }
 }
 
-@media (max-width: 480px) {
+/* Tablet styles */
+@media (max-width: 768px) {
     .container {
-        padding: 1rem;
+        max-width: 600px;
     }
     
     .card {
-        padding: 2rem;
+        padding: 2.5rem 3rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    button {
+        font-size: 1rem;
+        padding: 0.875rem 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .upload-section h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
+    .card {
+        padding: 2rem 1.5rem;
     }
     
     h1 {
         font-size: 2rem;
     }
     
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
     .input-section {
         flex-direction: column;
+        margin-bottom: 2rem;
     }
-
-    .upload-area {
-        padding: 1.5rem;
-    }
-
-    .file-item {
+    
+    input {
+        font-size: 1rem;
         padding: 0.875rem 1rem;
     }
     
+    button {
+        font-size: 1rem;
+        padding: 0.875rem 1.5rem;
+    }
+    
+    .stats {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.875rem;
+    }
+    
+    .actions {
+        gap: 0.75rem;
+    }
+    
+    .secondary-btn {
+        font-size: 0.9rem;
+    }
+    
+    .upload-section {
+        margin-top: 2rem;
+        padding-top: 2rem;
+    }
+    
+    .upload-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .upload-area {
+        padding: 2rem 1.5rem;
+        border-width: 2px;
+    }
+    
+    .upload-icon {
+        font-size: 3rem;
+    }
+    
+    .upload-text {
+        font-size: 1rem;
+    }
+    
+    .upload-hint {
+        font-size: 0.875rem;
+    }
+
+    .file-item {
+        padding: 1rem 1.25rem;
+        gap: 1rem;
+    }
+    
+    .file-icon {
+        font-size: 2rem;
+    }
+    
+    .file-name {
+        font-size: 0.95rem;
+    }
+    
+    .file-size {
+        font-size: 0.8rem;
+    }
+    
+    .file-download {
+        font-size: 1.3rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .file-remove {
+        font-size: 1.5rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .preview-title {
+        font-size: 0.9rem;
+    }
+    
     .preview-table {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
     }
     
     .preview-table td {
         padding: 0.4rem 0.5rem;
+        max-width: 80px;
     }
     
     .preview-table-container {
