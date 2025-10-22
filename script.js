@@ -98,6 +98,7 @@ const progressContainer = document.getElementById('progressContainer');
 const progressFill = document.getElementById('progressFill');
 const progressText = document.getElementById('progressText');
 const progressPercent = document.getElementById('progressPercent');
+let currentFile = null; // Store current file for download
 
 fileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
@@ -140,6 +141,7 @@ function uploadFile(file) {
 }
 
 function displayUploadedFile(file) {
+    currentFile = file; // Store file for download
     const fileSize = formatFileSize(file.size);
     const fileExtension = file.name.split('.').pop().toLowerCase();
     
@@ -154,7 +156,10 @@ function displayUploadedFile(file) {
                 <span class="file-name">${file.name}</span>
                 <span class="file-size">${fileSize}</span>
             </div>
-            <button class="file-remove" onclick="removeFile()">×</button>
+            <div class="file-actions">
+                <button class="file-download" onclick="downloadFile()">⬇️</button>
+                <button class="file-remove" onclick="removeFile()">×</button>
+            </div>
         </div>
     `;
 }
@@ -167,9 +172,30 @@ function formatFileSize(bytes) {
     return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
 }
 
+function downloadFile() {
+    if (!currentFile) return;
+    
+    // Create a temporary URL for the file
+    const url = URL.createObjectURL(currentFile);
+    
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = currentFile.name;
+    
+    // Trigger download
+    document.body.appendChild(link);
+    link.click();
+    
+    // Clean up
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+
 function removeFile() {
     uploadedFileDiv.innerHTML = '';
     fileInput.value = '';
+    currentFile = null;
 }
 
 // Welcome message

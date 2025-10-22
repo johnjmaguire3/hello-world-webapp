@@ -286,6 +286,27 @@ button:active {
     margin-top: 0.25rem;
 }
 
+.file-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.file-download {
+    background: transparent;
+    color: var(--text-light);
+    font-size: 1.3rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.file-download:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+    box-shadow: none;
+}
+
 .file-remove {
     background: transparent;
     color: var(--text-light);
