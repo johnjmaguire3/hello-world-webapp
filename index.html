@@ -3,69 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World App</title>
+    <meta name="description" content="An interactive web application with greeting, file upload, and data preview features">
+    <title>Interactive Web App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <h1 id="greeting">Hello World!</h1>
-            <p class="subtitle">Welcome to your interactive web app</p>
+    <main class="container">
+        <article class="card">
+            <header>
+                <h1 id="greeting">Hello World!</h1>
+                <p class="subtitle">A modern, interactive web experience</p>
+            </header>
             
-            <div class="input-section">
+            <section class="input-section" aria-label="Greeting form">
+                <label for="nameInput" class="visually-hidden">Enter your name</label>
                 <input 
                     type="text" 
                     id="nameInput" 
-                    placeholder="Enter your nombre..."
+                    placeholder="Enter your name"
                     autocomplete="off"
+                    aria-label="Name input field"
                 />
-                <button id="greetBtn">Greet Me</button>
-            </div>
+                <button id="greetBtn" type="button" aria-label="Submit greeting">Submit</button>
+            </section>
 
-            <div class="stats">
-                <div class="stat-item">
-                    <span class="stat-number" id="clickCount">0</span>
+            <section class="stats" aria-label="Activity statistics">
+                <div class="stat-item" role="status" aria-label="Click counter">
+                    <span class="stat-number" id="clickCount" aria-live="polite">0</span>
                     <span class="stat-label">Clicks</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="visitTime">0s</span>
+                <div class="stat-item" role="status" aria-label="Visit timer">
+                    <span class="stat-number" id="visitTime" aria-live="polite">0s</span>
                     <span class="stat-label">Time Here</span>
                 </div>
-            </div>
+            </section>
 
-            <div class="actions">
-                <button id="resetBtn" class="secondary-btn">Reset</button>
-                <button id="themeBtn" class="secondary-btn">🌙 Dark Mode</button>
-            </div>
+            <nav class="actions" aria-label="Application controls">
+                <button id="resetBtn" class="secondary-btn" type="button" aria-label="Reset statistics">Reset</button>
+                <button id="themeBtn" class="secondary-btn" type="button" aria-label="Toggle light and dark theme">Toggle Theme</button>
+            </nav>
 
-            <div class="upload-section">
-                <h3>Upload File</h3>
-                <div class="upload-area" id="uploadArea">
+            <section class="upload-section" aria-label="File upload">
+                <h2>Upload File</h2>
+                <div class="upload-area" id="uploadArea" role="button" tabindex="0" aria-label="Click or press enter to upload a file">
                     <input 
                         type="file" 
                         id="fileInput" 
                         accept=".csv,.xlsx,.xls"
+                        aria-label="File input for CSV or Excel files"
                         hidden
                     />
                     <label for="fileInput" class="upload-label">
-                        <span class="upload-icon">📁</span>
-                        <span class="upload-text">Click to upload CSV or Excel file</span>
-                        <span class="upload-hint">Supports .csv, .xlsx, .xls</span>
+                        <span class="upload-icon" aria-hidden="true">📄</span>
+                        <span class="upload-text">Upload CSV or Excel File</span>
+                        <span class="upload-hint">CSV, XLSX, XLS formats supported</span>
                     </label>
                 </div>
-                <div id="progressContainer" class="progress-container" style="display: none;">
+                <div id="progressContainer" class="progress-container" style="display: none;" role="progressbar" aria-label="File upload progress">
                     <div class="progress-info">
-                        <span id="progressText">Uploading...</span>
-                        <span id="progressPercent">0%</span>
+                        <span id="progressText" aria-live="polite">Uploading...</span>
+                        <span id="progressPercent" aria-live="polite">0%</span>
                     </div>
                     <div class="progress-bar">
                         <div id="progressFill" class="progress-fill"></div>
                     </div>
                 </div>
-                <div id="uploadedFile" class="uploaded-file"></div>
-            </div>
-        </div>
-    </div>
+                <div id="uploadedFile" class="uploaded-file" role="region" aria-label="Uploaded file preview"></div>
+            </section>
+        </article>
+    </main>
 
     <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <script src="script.js"></script>
